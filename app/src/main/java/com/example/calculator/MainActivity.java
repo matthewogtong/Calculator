@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText calculation, result;
     private String curr, res;
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAC, btnDel, btnDivision, btnMultiplication, btnSubtraction, btnAddition, btnEquals, btnDecimal;
-
+    private boolean decimal_inserted, operator_inserted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         curr = "";
         res = "";
+        decimal_inserted = false;
+        operator_inserted = false;
 
         btn0 = (Button) findViewById(R.id.btn0);
         btn1 = (Button) findViewById(R.id.btn1);
@@ -124,6 +126,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnDecimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // check if its empty => append "0." and set decimal_inserted variable to true
+                if(curr.isEmpty()) {
+                    curr = ".";
+                    decimal_inserted = true;
+                }
+                // check if decimal_inserted == false => append "."
+                if(decimal_inserted == false) {
+                    curr = curr + ".";
+                    decimal_inserted = true;
+                }
+                displayOne();
+            }
+        });
     }
 
     public void displayOne() {
