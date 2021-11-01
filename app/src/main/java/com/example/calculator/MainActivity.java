@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.calculator.databinding.ActivityCalculatorBinding;
+
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityCalculatorBinding binding;
     private EditText calculation, result;
     private String curr, res;
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAC, btnDel, btnDivision, btnMultiplication, btnSubtraction, btnAddition, btnEquals, btnDecimal;
@@ -17,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator);
+        binding = ActivityCalculatorBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+//        setContentView(R.layout.activity_calculator);
 
         calculation = findViewById(R.id.calculation);
         result = (EditText) findViewById(R.id.result);
