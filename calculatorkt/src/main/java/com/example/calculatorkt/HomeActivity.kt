@@ -9,32 +9,10 @@ import com.example.calculatorkt.databinding.ActivityCalculatorBinding
 
 class HomeActivity : AppCompatActivity() {
 
-
         private lateinit var binding: ActivityCalculatorBinding
         private lateinit var calculation: EditText; private lateinit var result: EditText
         private lateinit var curr: String; private lateinit var res: String
-//        private lateinit var btn0: Button
-//        private lateinit var btn1: Button
-//        private lateinit var btn2: Button
-//        private lateinit var btn3: Button
-//        private lateinit var btn4: Button
-//        private lateinit var btn5: Button
-//        private lateinit var btn6: Button
-//        private lateinit var btn7: Button
-//        private lateinit var btn8: Button
-//        private lateinit var btn9: Button
-//        private lateinit var btnAC: Button
-//        private lateinit var btnDel: Button
-//        private lateinit var btnDivision: Button
-//        private lateinit var btnMultiplication: Button
-//        private lateinit var btnSubtraction: Button
-//        private lateinit var btnAddition: Button
-//        private lateinit var btnEquals: Button
-//        private lateinit var btnDecimal: Button
-        private var decimal_inserted = false; private var operator_inserted = false
-
-
-
+        private var decimalInserted = false; private var operatorInserted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,24 +26,24 @@ class HomeActivity : AppCompatActivity() {
         res = ""
 
         //buttons
-        var btn0 = binding.btn0
-        var btn1 = binding.btn1
-        var btn2 = binding.btn2
-        var btn3 = binding.btn3
-        var btn4 = binding.btn4
-        var btn5 = binding.btn5
-        var btn6 = binding.btn6
-        var btn7 = binding.btn7
-        var btn8 = binding.btn8
-        var btn9 = binding.btn9
-        var btnDecimal = binding.btnDecimal
-        var btnMultiplication = binding.btnMultiplication
-        var btnDivision = binding.btnDivision
-        var btnSubtraction = binding.btnSubtraction
-        var btnAddition = binding.btnAddition
-        var btnEquals = binding.btnEquals
-        var btnAC = binding.btnAC
-        var btnDel = binding.btnDel
+        val btn0 = binding.btn0
+        val btn1 = binding.btn1
+        val btn2 = binding.btn2
+        val btn3 = binding.btn3
+        val btn4 = binding.btn4
+        val btn5 = binding.btn5
+        val btn6 = binding.btn6
+        val btn7 = binding.btn7
+        val btn8 = binding.btn8
+        val btn9 = binding.btn9
+        val btnDecimal = binding.btnDecimal
+        val btnMultiplication = binding.btnMultiplication
+        val btnDivision = binding.btnDivision
+        val btnSubtraction = binding.btnSubtraction
+        val btnAddition = binding.btnAddition
+        val btnEquals = binding.btnEquals
+        val btnAC = binding.btnAC
+        val btnDel = binding.btnDel
 
         btn0.setOnClickListener {
             curr += "0"
@@ -120,12 +98,12 @@ class HomeActivity : AppCompatActivity() {
         btnDecimal.setOnClickListener { // check if its empty => append "0." and set decimal_inserted variable to true
             if (curr.isEmpty()) {
                 curr = "."
-                decimal_inserted = true
+                decimalInserted = true
             }
             // check if decimal_inserted == false => append "."
-            if (!decimal_inserted) {
+            if (!decimalInserted) {
                 curr = "$curr."
-                decimal_inserted = true
+                decimalInserted = true
             }
             displayOne()
         }
@@ -142,7 +120,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnDivision.setOnClickListener { // set decimal_inserted = false
-            decimal_inserted = false
+            decimalInserted = false
             // check if curr is not empty
             if (curr.isNotEmpty()) {
                 // check if the last digit is dot => remove
@@ -150,9 +128,9 @@ class HomeActivity : AppCompatActivity() {
                     backspace()
                 }
                 // check if operator_inserted == false => append operator to curr
-                if (!operator_inserted) {
+                if (!operatorInserted) {
                     curr = "$curr ÷ "
-                    operator_inserted = true
+                    operatorInserted = true
                 }
             }
             // displayOne()
@@ -160,7 +138,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnMultiplication.setOnClickListener { // set decimal_inserted = false
-            decimal_inserted = false
+            decimalInserted = false
             // check if curr is not empty
             if (curr.isNotEmpty()) {
                 // check if the last digit is dot => remove
@@ -168,9 +146,9 @@ class HomeActivity : AppCompatActivity() {
                     backspace()
                 }
                 // check if operator_inserted == false => append operator to curr
-                if (!operator_inserted) {
+                if (!operatorInserted) {
                     curr = "$curr * "
-                    operator_inserted = true
+                    operatorInserted = true
                 }
             }
             // displayOne()
@@ -178,7 +156,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnSubtraction.setOnClickListener { // set decimal_inserted = false
-            decimal_inserted = false
+            decimalInserted = false
             // check if curr is not empty
             if (curr.isNotEmpty()) {
                 // check if the last digit is dot => remove
@@ -186,9 +164,9 @@ class HomeActivity : AppCompatActivity() {
                     backspace()
                 }
                 // check if operator_inserted == false => append operator to curr
-                if (!operator_inserted) {
+                if (!operatorInserted) {
                     curr = "$curr - "
-                    operator_inserted = true
+                    operatorInserted = true
                 }
             }
             // displayOne()
@@ -196,7 +174,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnAddition.setOnClickListener { // set decimal_inserted = false
-            decimal_inserted = false
+            decimalInserted = false
             // check if curr is not empty
             if (curr.isNotEmpty()) {
                 // check if the last digit is dot => remove
@@ -204,9 +182,9 @@ class HomeActivity : AppCompatActivity() {
                     backspace()
                 }
                 // check if operator_inserted == false => append operator to curr
-                if (!operator_inserted) {
+                if (!operatorInserted) {
                     curr = "$curr + "
-                    operator_inserted = true
+                    operatorInserted = true
                 }
             }
             // displayOne()
@@ -214,14 +192,14 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnEquals.setOnClickListener {
-            if (operator_inserted && curr.substring(curr.length - 1, curr.length) != " ") {
+            if (operatorInserted && curr.substring(curr.length - 1, curr.length) != " ") {
                 Log.d(curr, "onClick: This is the substring before switch")
                 val tokens = curr.split(" ").toTypedArray()
                 when (tokens[1][0]) {
-                    '+' -> res = java.lang.Double.toString(tokens[0].toDouble() + tokens[2].toDouble())
-                    '-' -> res = java.lang.Double.toString(tokens[0].toDouble() - tokens[2].toDouble())
-                    '*' -> res = java.lang.Double.toString(tokens[0].toDouble() * tokens[2].toDouble())
-                    '÷' -> res = java.lang.Double.toString(tokens[0].toDouble() / tokens[2].toDouble())
+                    '+' -> res = (tokens[0].toDouble() + tokens[2].toDouble()).toString()
+                    '-' -> res = (tokens[0].toDouble() - tokens[2].toDouble()).toString()
+                    '*' -> res = (tokens[0].toDouble() * tokens[2].toDouble()).toString()
+                    '÷' -> res = (tokens[0].toDouble() / tokens[2].toDouble()).toString()
                 }
             }
             displayTwo()
@@ -240,8 +218,8 @@ class HomeActivity : AppCompatActivity() {
     private fun clear() {
         curr = ""
         res = ""
-        decimal_inserted = false
-        operator_inserted = false
+        decimalInserted = false
+        operatorInserted = false
     }
 
     private fun backspace() {
@@ -249,13 +227,13 @@ class HomeActivity : AppCompatActivity() {
 
             // check if the dot is last char in curr => set dot_inserted = false
             if (curr.substring(curr.length - 1, curr.length) == ".") {
-                decimal_inserted = false
+                decimalInserted = false
             }
 
             // if operator is detected => delete three digits or chars from the curr & set operator_inserted = false
             if (curr.substring(curr.length - 1, curr.length) == " ") {
                 curr = curr.substring(0, curr.length - 3)
-                operator_inserted = false
+                operatorInserted = false
             } else {
                 curr = curr.substring(0, curr.length - 1)
             }
