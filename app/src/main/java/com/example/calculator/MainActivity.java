@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 import com.example.calculator.databinding.ActivityCalculatorBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+    
     private ActivityCalculatorBinding binding;
     private EditText calculation, result;
     private String curr, res;
@@ -22,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCalculatorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        setContentView(R.layout.activity_calculator);
 
         calculation = findViewById(R.id.calculation);
         result = (EditText) findViewById(R.id.result);
@@ -257,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(operator_inserted==true && !curr.substring(curr.length()-1,curr.length()).equals(" ")) {
+                    Log.d(curr, "onClick: This is the substring before switch");
                     String [] tokens = curr.split(" ");
 
                     switch (tokens[1].charAt(0)) {
