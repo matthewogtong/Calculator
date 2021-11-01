@@ -72,25 +72,180 @@ class HomeActivity : AppCompatActivity() {
             displayOne()
         }
 
+        btn1.setOnClickListener {
+            curr += "1"
+            displayOne()
+        }
+
+        btn2.setOnClickListener {
+            curr += "2"
+            displayOne()
+        }
+
+        btn3.setOnClickListener {
+            curr += "3"
+            displayOne()
+        }
+
+        btn4.setOnClickListener {
+            curr += "4"
+            displayOne()
+        }
+
+        btn5.setOnClickListener {
+            curr += "5"
+            displayOne()
+        }
+
+        btn6.setOnClickListener {
+            curr += "6"
+            displayOne()
+        }
+
+        btn7.setOnClickListener {
+            curr += "7"
+            displayOne()
+        }
+
+        btn8.setOnClickListener {
+            curr += "8"
+            displayOne()
+        }
+
+        btn9.setOnClickListener {
+            curr += "9"
+            displayOne()
+        }
+
+        btnDecimal.setOnClickListener { // check if its empty => append "0." and set decimal_inserted variable to true
+            if (curr.isEmpty()) {
+                curr = "."
+                decimal_inserted = true
+            }
+            // check if decimal_inserted == false => append "."
+            if (!decimal_inserted) {
+                curr = "$curr."
+                decimal_inserted = true
+            }
+            displayOne()
+        }
+
+        btnAC.setOnClickListener {
+            clear()
+            displayOne()
+            displayTwo()
+        }
+
+        btnDel.setOnClickListener {
+            backspace()
+            displayOne()
+        }
+
+        btnDivision.setOnClickListener { // set decimal_inserted = false
+            decimal_inserted = false
+            // check if curr is not empty
+            if (curr.isNotEmpty()) {
+                // check if the last digit is dot => remove
+                if (curr.substring(curr.length - 1, curr.length) == ".") {
+                    backspace()
+                }
+                // check if operator_inserted == false => append operator to curr
+                if (!operator_inserted) {
+                    curr = "$curr ÷ "
+                    operator_inserted = true
+                }
+            }
+            // displayOne()
+            displayOne()
+        }
+
+        btnMultiplication.setOnClickListener { // set decimal_inserted = false
+            decimal_inserted = false
+            // check if curr is not empty
+            if (curr.isNotEmpty()) {
+                // check if the last digit is dot => remove
+                if (curr.substring(curr.length - 1, curr.length) == ".") {
+                    backspace()
+                }
+                // check if operator_inserted == false => append operator to curr
+                if (!operator_inserted) {
+                    curr = "$curr * "
+                    operator_inserted = true
+                }
+            }
+            // displayOne()
+            displayOne()
+        }
+
+        btnSubtraction.setOnClickListener { // set decimal_inserted = false
+            decimal_inserted = false
+            // check if curr is not empty
+            if (curr.isNotEmpty()) {
+                // check if the last digit is dot => remove
+                if (curr.substring(curr.length - 1, curr.length) == ".") {
+                    backspace()
+                }
+                // check if operator_inserted == false => append operator to curr
+                if (!operator_inserted) {
+                    curr = "$curr - "
+                    operator_inserted = true
+                }
+            }
+            // displayOne()
+            displayOne()
+        }
+
+        btnAddition.setOnClickListener { // set decimal_inserted = false
+            decimal_inserted = false
+            // check if curr is not empty
+            if (curr.isNotEmpty()) {
+                // check if the last digit is dot => remove
+                if (curr.substring(curr.length - 1, curr.length) == ".") {
+                    backspace()
+                }
+                // check if operator_inserted == false => append operator to curr
+                if (!operator_inserted) {
+                    curr = "$curr + "
+                    operator_inserted = true
+                }
+            }
+            // displayOne()
+            displayOne()
+        }
+
+        btnEquals.setOnClickListener {
+            if (operator_inserted && curr.substring(curr.length - 1, curr.length) != " ") {
+                Log.d(curr, "onClick: This is the substring before switch")
+                val tokens = curr.split(" ").toTypedArray()
+                when (tokens[1][0]) {
+                    '+' -> res = java.lang.Double.toString(tokens[0].toDouble() + tokens[2].toDouble())
+                    '-' -> res = java.lang.Double.toString(tokens[0].toDouble() - tokens[2].toDouble())
+                    '*' -> res = java.lang.Double.toString(tokens[0].toDouble() * tokens[2].toDouble())
+                    '÷' -> res = java.lang.Double.toString(tokens[0].toDouble() / tokens[2].toDouble())
+                }
+            }
+            displayTwo()
+        }
+
     }
 
     private fun displayOne() {
         calculation.setText(curr)
     }
 
-    fun displayTwo() {
+    private fun displayTwo() {
         result.setText(res)
     }
 
-    fun clear() {
+    private fun clear() {
         curr = ""
         res = ""
         decimal_inserted = false
         operator_inserted = false
     }
 
-    fun backspace() {
-        if (!curr.isEmpty()) {
+    private fun backspace() {
+        if (curr.isNotEmpty()) {
 
             // check if the dot is last char in curr => set dot_inserted = false
             if (curr.substring(curr.length - 1, curr.length) == ".") {
