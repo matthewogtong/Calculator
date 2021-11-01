@@ -12,25 +12,25 @@ class HomeActivity : AppCompatActivity() {
 
         private lateinit var binding: ActivityCalculatorBinding
         private lateinit var calculation: EditText; private lateinit var result: EditText
-        private lateinit var curr: String; lateinit var res: String
-        private lateinit var btn0: Button
-        private lateinit var btn1: Button
-        private lateinit var btn2: Button
-        private lateinit var btn3: Button
-        private lateinit var btn4: Button
-        private lateinit var btn5: Button
-        private lateinit var btn6: Button
-        private lateinit var btn7: Button
-        private lateinit var btn8: Button
-        private lateinit var btn9: Button
-        private lateinit var btnAC: Button
-        private lateinit var btnDel: Button
-        private lateinit var btnDivision: Button
-        private lateinit var btnMultiplication: Button
-        private lateinit var btnSubtraction: Button
-        private lateinit var btnAddition: Button
-        private lateinit var btnEquals: Button
-        private lateinit var btnDecimal: Button
+        private lateinit var curr: String; private lateinit var res: String
+//        private lateinit var btn0: Button
+//        private lateinit var btn1: Button
+//        private lateinit var btn2: Button
+//        private lateinit var btn3: Button
+//        private lateinit var btn4: Button
+//        private lateinit var btn5: Button
+//        private lateinit var btn6: Button
+//        private lateinit var btn7: Button
+//        private lateinit var btn8: Button
+//        private lateinit var btn9: Button
+//        private lateinit var btnAC: Button
+//        private lateinit var btnDel: Button
+//        private lateinit var btnDivision: Button
+//        private lateinit var btnMultiplication: Button
+//        private lateinit var btnSubtraction: Button
+//        private lateinit var btnAddition: Button
+//        private lateinit var btnEquals: Button
+//        private lateinit var btnDecimal: Button
         private var decimal_inserted = false; private var operator_inserted = false
 
 
@@ -44,8 +44,8 @@ class HomeActivity : AppCompatActivity() {
         calculation = binding.calculation
         result = binding.result
 
-        var curr = ""
-        var res = ""
+        curr = ""
+        res = ""
 
         //buttons
         var btn0 = binding.btn0
@@ -67,9 +67,14 @@ class HomeActivity : AppCompatActivity() {
         var btnAC = binding.btnAC
         var btnDel = binding.btnDel
 
+        btn0.setOnClickListener {
+            curr += "0"
+            displayOne()
+        }
+
     }
 
-    fun displayOne() {
+    private fun displayOne() {
         calculation.setText(curr)
     }
 
