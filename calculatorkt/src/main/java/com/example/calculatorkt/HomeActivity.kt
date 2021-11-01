@@ -6,12 +6,11 @@ import com.example.calculatorkt.databinding.ActivityCalculatorBinding
 
 class HomeActivity : AppCompatActivity() {
 
-
+        private lateinit var binding: ActivityCalculatorBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculatorBinding.inflate(layoutInflater)
-
-        setContentView(R.layout.activity_calculator)
+        setContentView(binding.root)
     }
 }
