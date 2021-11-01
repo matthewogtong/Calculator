@@ -29,4 +29,31 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculation"/>
+
+    <Button
+        android:id="@+id/btnAC"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#673AB7"
+        android:textColor="#ffffff"
+        android:text="CLEAR"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:layout_marginLeft="5dp"/>
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#673AB7"
+        android:textColor="#ffffff"
+        android:text="BACKSPACE"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/btnAC"
+        app:layout_constraintTop_toTopOf="@+id/btnAC"
+        android:layout_marginLeft="5dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
