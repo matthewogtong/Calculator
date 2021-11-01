@@ -20,5 +20,15 @@ class HomeActivity : AppCompatActivity() {
 
         calculation = binding.calculation
         result = binding.result
+
+        val curr = ""
+        val res = ""
+        val decimal_inserted = false
+        val operator_inserted = false
+
+        //buttons
+
+
+
     }
 }
