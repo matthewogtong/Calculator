@@ -46,8 +46,6 @@ class HomeActivity : AppCompatActivity() {
 
         var curr = ""
         var res = ""
-        var decimal_inserted = false
-        var operator_inserted = false
 
         //buttons
         var btn0 = binding.btn0
@@ -73,5 +71,35 @@ class HomeActivity : AppCompatActivity() {
 
     fun displayOne() {
         calculation.setText(curr)
+    }
+
+    fun displayTwo() {
+        result.setText(res)
+    }
+
+    fun clear() {
+        curr = ""
+        res = ""
+        decimal_inserted = false
+        operator_inserted = false
+    }
+
+    fun backspace() {
+        if (!curr.isEmpty()) {
+
+            // check if the dot is last char in curr => set dot_inserted = false
+            if (curr.substring(curr.length - 1, curr.length) == ".") {
+                decimal_inserted = false
+            }
+
+            // if operator is detected => delete three digits or chars from the curr & set operator_inserted = false
+            if (curr.substring(curr.length - 1, curr.length) == " ") {
+                curr = curr.substring(0, curr.length - 3)
+                operator_inserted = false
+            } else {
+                curr = curr.substring(0, curr.length - 1)
+            }
+            curr = curr.substring(0, curr.length - 1)
+        }
     }
 }
