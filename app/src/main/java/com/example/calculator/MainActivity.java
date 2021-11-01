@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -43,17 +44,93 @@ public class MainActivity extends AppCompatActivity {
         btnAC = (Button) findViewById(R.id.btnAC);
         btnDel = (Button) findViewById(R.id.btnDel);
 
-        displayOne();
-        displayTwo();
+        btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "0";
+                displayOne();
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "1";
+                displayOne();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "2";
+                displayOne();
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "3";
+                displayOne();
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "4";
+                displayOne();
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "5";
+                displayOne();
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "6";
+                displayOne();
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "7";
+                displayOne();
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "8";
+                displayOne();
+            }
+        });
+
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                curr = curr + "9";
+                displayOne();
+            }
+        });
+
     }
 
     public void displayOne() {
-        curr = "2x3";
         calculation.setText(curr);
     }
 
     public void displayTwo() {
-        res = "6";
         result.setText(res);
     }
 
