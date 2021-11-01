@@ -152,13 +152,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnDel.setOnClickListener((new View.OnClickListener() {
+        btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backspace();
                 displayOne();
             }
-        }));
+        });
+
+        btnDivision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set decimal_inserted = false
+                decimal_inserted = false;
+                // check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // check if the last digit is dot => remove
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // check if operator_inserted == false => append operator to curr
+                    if (operator_inserted == false) {
+                        curr = curr + " ÷ ";
+                        operator_inserted = true;
+                    }
+                }
+                // displayOne()
+                displayOne();
+            }
+        });
     }
 
     public void displayOne() {
@@ -178,6 +200,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void backspace() {
         if(!curr.isEmpty()) {
+
+            // check if the dot is last char in curr => set dot_inserted = false
+            if(curr.substring(curr.length()-1, curr.length()).equals(".")) {
+                decimal_inserted = false;
+            }
+
+            // if operator is detected => delete three digits or chars from the curr & set operator_inserted = false
+            if(curr.substring(curr.length()-1, curr.length()).equals(" ")) {
+                curr = curr.substring(0, curr.length()-3);
+                operator_inserted = false;
+            } else {
+                curr = curr.substring(0, curr.length()-1);
+            }
             curr = curr.substring(0, curr.length()-1);
         }
     }
