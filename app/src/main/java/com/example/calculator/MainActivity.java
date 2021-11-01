@@ -142,6 +142,15 @@ public class MainActivity extends AppCompatActivity {
                 displayOne();
             }
         });
+
+        btnAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clear();
+                displayOne();
+                displayTwo();
+            }
+        });
     }
 
     public void displayOne() {
@@ -150,6 +159,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayTwo() {
         result.setText(res);
+    }
+
+    public void clear() {
+        curr = "";
+        res = "";
+        decimal_inserted = false;
+        operator_inserted = false;
     }
 
 }
