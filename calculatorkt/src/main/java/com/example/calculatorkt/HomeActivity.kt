@@ -27,6 +27,24 @@ class HomeActivity : AppCompatActivity() {
         val operator_inserted = false
 
         //buttons
+        var btn0 = binding.btn0
+        var btn1 = binding.btn1
+        var btn2 = binding.btn2
+        var btn3 = binding.btn3
+        var btn4 = binding.btn4
+        var btn5 = binding.btn5
+        var btn6 = binding.btn6
+        var btn7 = binding.btn7
+        var btn8 = binding.btn8
+        var btn9 = binding.btn9
+        var btnDecimal = binding.btnDecimal
+        var btnMultiplication = binding.btnMultiplication
+        var btnDivision = binding.btnDivision
+        var btnSubtraction = binding.btnSubtraction
+        var btnAddition = binding.btnAddition
+        var btnEquals = binding.btnEquals
+        var btnAC = binding.btnAC
+        var btnDel = binding.btnDel
 
 
 
