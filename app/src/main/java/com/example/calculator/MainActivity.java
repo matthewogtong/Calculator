@@ -247,6 +247,31 @@ public class MainActivity extends AppCompatActivity {
                 displayOne();
             }
         });
+
+        btnEquals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(operator_inserted==true && !curr.substring(curr.length()-1,curr.length()).equals(" ")) {
+                    String [] tokens = curr.split(" ");
+
+                    switch (tokens[1].charAt(0)) {
+                        case '+':
+                            res = Double.toString(Double.parseDouble(tokens[0]) + Double.parseDouble(tokens[2]));
+                            break;
+                        case '-':
+                            res = Double.toString(Double.parseDouble(tokens[0]) - Double.parseDouble(tokens[2]));
+                            break;
+                        case '*':
+                            res = Double.toString(Double.parseDouble(tokens[0]) * Double.parseDouble(tokens[2]));
+                            break;
+                        case '÷':
+                            res = Double.toString(Double.parseDouble(tokens[0]) / Double.parseDouble(tokens[2]));
+                            break;
+                    }
+                }
+                displayTwo();
+            }
+        });
     }
 
     public void displayOne() {
