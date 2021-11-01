@@ -151,6 +151,14 @@ public class MainActivity extends AppCompatActivity {
                 displayTwo();
             }
         });
+
+        btnDel.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backspace();
+                displayOne();
+            }
+        }));
     }
 
     public void displayOne() {
@@ -166,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
         res = "";
         decimal_inserted = false;
         operator_inserted = false;
+    }
+
+    public void backspace() {
+        if(!curr.isEmpty()) {
+            curr = curr.substring(0, curr.length()-1);
+        }
     }
 
 }
