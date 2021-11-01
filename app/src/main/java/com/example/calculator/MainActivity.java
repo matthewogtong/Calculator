@@ -181,6 +181,72 @@ public class MainActivity extends AppCompatActivity {
                 displayOne();
             }
         });
+
+        btnMultiplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set decimal_inserted = false
+                decimal_inserted = false;
+                // check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // check if the last digit is dot => remove
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // check if operator_inserted == false => append operator to curr
+                    if (operator_inserted == false) {
+                        curr = curr + " * ";
+                        operator_inserted = true;
+                    }
+                }
+                // displayOne()
+                displayOne();
+            }
+        });
+
+        btnSubtraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set decimal_inserted = false
+                decimal_inserted = false;
+                // check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // check if the last digit is dot => remove
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // check if operator_inserted == false => append operator to curr
+                    if (operator_inserted == false) {
+                        curr = curr + " - ";
+                        operator_inserted = true;
+                    }
+                }
+                // displayOne()
+                displayOne();
+            }
+        });
+
+        btnAddition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set decimal_inserted = false
+                decimal_inserted = false;
+                // check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // check if the last digit is dot => remove
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // check if operator_inserted == false => append operator to curr
+                    if (operator_inserted == false) {
+                        curr = curr + " + ";
+                        operator_inserted = true;
+                    }
+                }
+                // displayOne()
+                displayOne();
+            }
+        });
     }
 
     public void displayOne() {
